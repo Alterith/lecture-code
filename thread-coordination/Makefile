@@ -37,7 +37,7 @@ $(OBJECTS): %.o: %.c
 
 # remove object files, emacs temporaries
 clean:
-	rm -f *.o *~
+	rm -f *.o *~ $(EXECUTABLE)
 
 # print-VAR prints the value of the variable VAR
 print-%  : ; @echo $* = $($*)
