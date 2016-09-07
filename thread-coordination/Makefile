@@ -3,8 +3,8 @@
 #################
 
 # files
-EXECUTABLE  = procon1
-SOURCES  = procon1.c 
+EXECUTABLE  = procon_flag
+SOURCES  = procon_flag.c 
 
 OBJECTS  = $(SOURCES:.c=.o)
 

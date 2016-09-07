@@ -9,9 +9,9 @@
 
 typedef struct sharedobject {
   FILE *rfile;  // file to read lines from
-  bool flag;     // to coordinate between a producer and consumer
   int linenum;  // line number
   char *line;   // next line to have read
+  bool flag;     // to coordinate between a producer and consumer
 } so_t;
 
 // read a line from a file and return a new line string object on the heap
@@ -69,8 +69,8 @@ producer( void *arg ) {
   while ( (line = readline( so->rfile )) ) { 
     so->linenum = i++;
     so->line = line;   // put the line into the shared buffer
-    fprintf( stdout, "Prod: [%d] %s", i, line ); // for visualization
     markfull( so );   // mark the buffer as full; wait for it to become empty
+    fprintf( stdout, "Prod: [%d] %s", i, line ); // for visualization
   }
   // to terminate the consumer's loop (note: 'line' == NULL, but so->line != NULL)
   so->line = NULL;
